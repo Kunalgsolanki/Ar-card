@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.0/dist/mindar-image-aframe.prod.js"></script>
+  </head>
+  <body>
+
+    <!--  a- sceane is tag is provide the Ar vR enviroment in your  web - page 
+    
+     it is afrema web fream work librabry  which provide  ar vr compont in web-page 
+      and 
+
+       to  add target image 
+        to use .mind file it file has target point of your  image which are scan in your camera view 
+
+        for genrate the .mind file use use this web-site 
+    -->
+    <a-scene mindar-image="imageTargetSrc: kgs.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        
+      <!--  a-assets is the  add ar component on the genarted ar  -->
+      <a-assets>
+	<img id="card" src="./kgs.jpeg" />
+	<!-- <a-asset-item id="avatarModel" src="./P.glb"></a-asset-item> -->
+      </a-assets>
+
+       <!--  a-camear provide the  ar acess control in your  web- server  and show the cameera in your web-page
+   it take some atribute like possion and clickble property in your page 
+  -->
+
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+<!--  here a-entity tag uase type of ar componeny which render on genrated ar and it use for set type of ar component and it possion in cameara view it have attribute as x,y,z and rotation atrribute to use ar component in 3d cameara view 
+     it  ar componet should have set id for diffrent componet to indivudle .
+  -->
+      <a-entity mindar-image-target="targetIndex: 0">
+                 <!--  it use to create flat surface in 3d camera-view  -->
+	<a-plane src="#card" position="0 0 0" height="1" width="1" rotation="0 0 0"></a-plane>
+      <!--  a-gltf mode is ar component type it is use to display the 3d model in   camera view 
+         it have such attribute like rotation possion  and scale  
+         src 
+        -->
+	<!-- <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="0.005 0.005 0.005" src="#avatarModel"
+	  animation="property: position; to: 0 0 0.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+	> -->
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
